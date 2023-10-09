@@ -64,7 +64,7 @@ volumes:
   nc_data:
     driver_opts:
       type: nfs
-      o: addr=192.168.78.111,rw,noatime,rsize=8192,wsize=8192,tcp,timeo=14,nfsvers=4
+      o: addr=192.168.100.111,rw,noatime,rsize=8192,wsize=8192,tcp,timeo=14,nfsvers=4
       device: :/mnt/data/app/nextcloud
   redis_data:
     driver: local
