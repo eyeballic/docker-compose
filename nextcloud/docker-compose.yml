@@ -11,7 +11,8 @@ services:
     ports:
       - 10020:80
     volumes:
-      - nc_data:/var/www/html
+      - nc_html:/var/www/html
+      - nc_data:/var/www/html/data
     environment:
       - TZ=Asia/Seoul
       - REDIS_HOST=redis
@@ -54,12 +55,17 @@ volumes:
       type: none
       o: bind
       device: /data/nextcloud/db_data
-  nc_data:
+  nc_html:
     driver: local
     driver_opts:
       type: none
       o: bind
-      device: /data/nextcloud/nc_data
+      device: /data/nextcloud/nc_html
+  nc_data:
+    driver_opts:
+      type: nfs
+      o: addr=192.168.78.111,rw,noatime,rsize=8192,wsize=8192,tcp,timeo=14,nfsvers=4
+      device: :/mnt/data/app/nextcloud
   redis_data:
     driver: local
     driver_opts:
