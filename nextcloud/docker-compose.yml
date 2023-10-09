@@ -29,7 +29,7 @@ services:
     image: redis:alpine
     restart: unless-stopped
     volumes:
-      - redis_data:/dataf
+      - redis_data:/data
     expose:
       - 6379
       
