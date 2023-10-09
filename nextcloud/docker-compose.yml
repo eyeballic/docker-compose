@@ -26,6 +26,8 @@ services:
   redis:
     image: redis:alpine
     restart: unless-stopped
+    volumes:
+      - redis_data:/dataf
     expose:
       - 6379
       
@@ -55,3 +57,9 @@ volumes:
       type: none
       o: bind
       device: /data/nextcloud/nc_data
+  redis_data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /data/nextcloud/redis_data
