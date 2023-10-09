@@ -1,7 +1,8 @@
 version: "3.4"
 services:
   nextcloud:
-    image: nextcloud:apache
+    build:
+      context: .
     restart: unless-stopped
     depends_on:
       - db
