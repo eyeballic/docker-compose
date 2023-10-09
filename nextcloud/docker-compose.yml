@@ -1,6 +1,7 @@
 version: "3.4"
 services:
   nextcloud:
+    image: nextcloud:stable-smb
     build:
       context: .
     restart: unless-stopped
@@ -12,6 +13,7 @@ services:
     volumes:
       - nc_data:/var/www/html
     environment:
+      - TZ=Asia/Seoul
       - REDIS_HOST=redis
       - MYSQL_HOST=db
       - MYSQL_DATABASE=nextcloud
@@ -38,6 +40,7 @@ services:
     volumes:
       - db_data:/var/lib/mysql
     environment:
+      - TZ=Asia/Seoul
       - MYSQL_DATABASE=nextcloud
       - MYSQL_USER=nextcloud
       - MYSQL_ROOT_PASSWORD=nextcloud
