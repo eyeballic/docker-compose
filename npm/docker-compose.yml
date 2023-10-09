@@ -1,0 +1,36 @@
+version: '3'
+
+services:
+  npm:
+    image: 'jc21/nginx-proxy-manager:latest'
+    container_name: npm
+    restart: always
+    ports:
+      - 80:80
+      - 81:81
+      - 443:443
+    volumes:
+      - data:/data
+      - letsencrypt:/etc/letsencrypt/
+    environment:
+      - TZ=Asia/Seoul
+
+networks:
+  default:
+    name: proxy
+    external: true
+
+volumes:
+    data:
+      driver: local
+      driver_opts:
+        type: none
+        o: bind
+        device: /data/npm/data
+    letsencrypt:
+      driver: local
+      driver_opts:
+        type: none
+        o: bind
+        device: /data/npm/letsencrypt
+
