@@ -9,7 +9,7 @@ services:
       - db
       - redis
     ports:
-      - 80:80
+      - 10080:80
     volumes:
       - nc_data:/var/www/html
     environment:
